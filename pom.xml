@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.emircankirez</groupId>
-	<artifactId>llama3</artifactId>
+	<artifactId>working-with-llama3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>llama3</name>
+	<name>working-with-llama3</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
