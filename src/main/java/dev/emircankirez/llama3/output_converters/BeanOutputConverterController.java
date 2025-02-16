@@ -30,4 +30,13 @@ public class BeanOutputConverterController {
         PromptTemplate promptTemplate = new PromptTemplate(message, Map.of("singer", singer, "format", outputConverter.getFormat()));
         return outputConverter.convert(chatClient.prompt(promptTemplate.create()).call().content());
     }
+
+    @GetMapping("/films/{actor}")
+    public ActorsFilms getFilmsByActor(@PathVariable String actor) {
+        return chatClient.prompt()
+                .user(u -> u.text("Give me the films of {actor}. If you don't know just say don't know.")
+                        .param("actor", actor))
+                .call()
+                .entity(ActorsFilms.class);
+    }
 }
