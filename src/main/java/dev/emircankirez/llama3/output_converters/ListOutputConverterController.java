@@ -4,6 +4,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.converter.ListOutputConverter;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,4 +37,13 @@ public class ListOutputConverterController {
         return outputConverter.convert(chatClient.prompt(prompt).call().content());
 
     }
+
+    @GetMapping("/list")
+    public List<String> listProgrammingLanguages() {
+        return chatClient.prompt()
+                .user("Give me the top 10 programming languages.")
+                .call()
+                .entity(new ParameterizedTypeReference<>() {});
+    }
+
 }
